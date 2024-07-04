@@ -31,11 +31,11 @@ function Registor() {
     <>
       <div
         className="relative h-screen overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: 'url("/bg-login.jpg")' }}
+        style={{ backgroundImage: 'url("https://picsum.photos/1600/2000")' }}
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="flex items-center justify-center h-screen">
-          <div className="flex flex-col items-center justify-center gap-5 card glass py-5 px-16 bg-white bg-opacity-80 backdrop-blur-lg rounded-lg shadow-lg">
+          <div className="flex flex-col items-center justify-center gap-5 card glass py-5 px-16 bg-white bg-opacity-0 backdrop-blur-lg rounded-lg shadow-lg">
             <h1 className="font-bold text-4xl uppercase text-center text-white">
               Register
             </h1>

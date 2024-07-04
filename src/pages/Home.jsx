@@ -1,6 +1,6 @@
 import React from "react";
-import { Form } from "react-router-dom/dist";
-import { useActionData } from "react-router-dom/dist";
+import { Form } from "react-router-dom";
+import { useActionData } from "react-router-dom";
 import { useSelector } from "react-redux";
 import FormInput from "../components/FormInput";
 import TodosList from "../components/TodosList";
@@ -9,7 +9,10 @@ export let action = async ({ request }) => {
   let formData = await request.formData();
   let title = formData.get("title");
   let complet = formData.get("complet");
-  return { title, complet };
+  let firstName = formData.get("firstName");
+  let lastName = formData.get("lastName");
+  let age = formData.get("age");
+  return { title, complet, firstName, lastName, age };
 };
 
 function Home() {
@@ -21,10 +24,31 @@ function Home() {
           className="flex items-center justify-center flex-col w-72 py-10"
         >
           <FormInput
-            lebal="Add title"
+            label="First Name"
+            name="firstName"
+            type="text"
+            placeholder="John"
+            size="input"
+          />
+          <FormInput
+            label="Last Name"
+            name="lastName"
+            type="text"
+            placeholder="Doe"
+            size="input"
+          />
+          <FormInput
+            label="Age"
+            name="age"
+            type="number"
+            placeholder="30"
+            size="input"
+          />
+          <FormInput
+            label="Add title"
             name="title"
             type="text"
-            plecholder="Learn books"
+            placeholder="Learn books"
             size="input"
           />
           <div className="form-control mt-5">

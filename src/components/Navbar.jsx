@@ -40,37 +40,47 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-xl font-bold">
           daisyUI
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
+          {!user && (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end flex items-center gap-4">
-        {user && (
-          <div className="avatar">
-            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={user.photoURL} alt="User Avatar" />
+        {user ? (
+          <>
+            <div className="avatar">
+              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={user.photoURL} alt="User Avatar" />
+              </div>
             </div>
-          </div>
+            <button
+              onClick={() => {
+                toast.success(`Bye  ${user.displayName}`);
+                dispatch(logout());
+              }}
+              className="btn btn-primary"
+            >
+              LogOut
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-primary">
+            Login
+          </Link>
         )}
-        <button
-          onClick={() => {
-            toast.success(`Bye Bye ${user.displayName}`);
-            dispatch(logout());
-          }}
-          className="btn btn-primary"
-        >
-          LogOut
-        </button>
       </div>
     </header>
   );
